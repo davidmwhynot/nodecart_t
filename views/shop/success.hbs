@@ -1,0 +1,67 @@
+<h1>Order Success</h1>
+<div id="success" class="mb-2 alert alert-success{{#if noMessage }}d-none{{/if}}">
+	Successfully bought product!
+</div>
+<h1>Cart</h1>
+{{cart}}
+<br />
+{{cart.totalQty}}
+<br />
+{{cart.totalPrice}}
+<br />
+{{#each cart.items}}
+<br />
+	{{#each this}}
+	<br />
+		{{this}}
+		<br />
+		{{#each this}}
+		<br />
+			{{this}}
+			<br />
+			{{#each this}}
+			<br />
+				{{this}}
+				<br />
+			{{/each}}
+			<br />
+		{{/each}}
+		<br />
+	{{/each}}
+	<br />
+{{/each}}
+<br />
+
+<h1>Charge</h1>
+{{charge}}
+<br />
+{{#each charge}}
+<br />
+	{{this}}
+	<br />
+	{{#each this}}
+	<br />
+	  {{this}}
+		<br />
+		{{#each this}}
+		<br />
+		  {{this}}
+			<br />
+			{{#each this}}
+			<br />
+			  {{this}}
+				<br />
+				{{#each this}}
+				<br />
+				  {{this}}
+					<br />
+				{{/each}}
+				<br />
+			{{/each}}
+			<br />
+		{{/each}}
+		<br />
+	{{/each}}
+	<br />
+{{/each}}
+<br />

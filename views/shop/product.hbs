@@ -1,0 +1,15 @@
+<div class="back-button mb-3">
+	<a href="javascript:history.back()" class="text-body">Go Back</a>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<img class="img-fluid position-sticky" src="{{product.imagePath}}" alt="">
+	</div>
+	<div class="col-md-6">
+		<h1>{{product.title}}</h1>
+		<h2 class="text-muted">${{product.price}}</h2>
+		<p>{{product.description}}</p>
+		<hr>
+		<a href="/shop/cart/add/{{product._id}}" class="btn btn-outline-success btn-lg btn-block">Add to Cart</a>
+	</div>
+</div>

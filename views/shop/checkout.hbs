@@ -1,0 +1,43 @@
+<div class="back-button mb-3">
+	<a href="javascript:history.back()" class="text-body">Go Back</a>
+</div>
+<h1>{{title}}</h1>
+
+<h4>Your Total: ${{ total }}</h4>
+<div id="charge-error" class="alert alert-danger {{#if noError }}d-none{{/if}}">
+	{{ errMsg }}
+</div>
+<form action="/shop/checkout" method="post" id="payment-form" data-key="{{ pubKey }}">
+	<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+	{{#if auth }}
+		TODO: SAVED ADDRESS DETAILS
+		<hr>
+	{{else}}
+		{{> login }}
+	{{/if}}
+	<h4 class="border-bottom border-primary my-3 pb-2">Billing Address</h4>
+	<div id="billingAddress">
+		{{> address prefix="billing-" }}
+	</div>
+	<div class="">
+		<h6 class="d-inline mr-3">Shipping Address</h6>
+		{{!-- same as billing address --}}
+			<div class="form-check d-inline-block">
+				<input class="form-check-input" type="checkbox" id="sameAsBilling" name="shipping-address-same-as-billing" checked>
+				<label class="form-check-label" for="sameAsBilling">
+					Same as Billing Address
+				</label>
+			</div>
+	</div>
+	<div id="shippingAddress" class="d-none">
+		{{> address prefix="shipping-" }}
+	</div>
+
+	<h4 class="border-bottom border-primary my-3 pb-2">Payment Details</h4>
+	<div id="card-element" class="form-control mb-3">
+		<!-- A Stripe Element will be inserted here. -->
+	</div>
+	<!-- Used to display Element errors. -->
+	<div id="card-errors" class="mb-3 alert alert-danger d-none" role="alert"></div>
+	<button id="checkoutSubmit" class="btn btn-outline-primary btn-lg btn-block mb-5">Buy now</button>
+</form>

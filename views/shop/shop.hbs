@@ -1,0 +1,36 @@
+{{#if error}}
+	error
+{{/if}}
+<div class="d-flex justify-content-between align-items-center mb-3">
+	<h1 class="shop-title display-3 mr-3">Shop</h1>
+	<div class="d-inline-flex align-items-center">
+		<label for="sort">Sort&nbsp;by:</label>
+		<select class="ml-3 form-control" id="sort">
+			<option value="featured" selected>Featured</option>
+			<option value="title">Title</option>
+			<option value="price">Price</option>
+		</select>
+	</div>
+</div>
+<div class="row mb-4">
+	{{#each products }}
+		<div class="col-lg-4 col-md-6 mb-4">
+			<div class="card h-100 product" data-id="{{this._id}}" data-title="{{this.title}}" data-price="{{this.price}}">
+				<a href="/shop/product/{{this._id}}" class="shop-img text-center">
+					<img class="card-img-top" src="{{this.imagePath}}" alt="Card image cap">
+					<span class="text-light text-uppercase">More&nbsp;Details</span>
+				</a>
+				<div class="card-body">
+					<h5 class="card-title">{{this.title}}</h5>
+					<p class="card-text description">{{this.description}} Ipsum dolor sit amet, consectetur adipisicing elit. Voluptate voluptatibus consequuntur dicta veritatis voluptates dolore ipsam facere. Dolores, voluptates.</p>
+				</div>
+				<div class="card-footer">
+					<div class="d-flex align-items-center">
+						<span class="price mb-1 mb-md-0 col-md-4">${{this.price}}</span>
+						<a href="/shop/cart/add/{{this._id}}" class="btn btn-success col-md">Add to Cart</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/each}}
+</div>

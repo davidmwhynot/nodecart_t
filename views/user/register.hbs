@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center">
+	<div class="col-sm-10 col-md-8 col-lg-6">
+		<div class="card">
+			<h3 class="card-header card-title">Sign Up</h3>
+			<div class="card-body">
+				{{#if hasErrors}}
+						{{#each messages}}
+						<div class="alert alert-danger">{{this}}</div>
+						{{/each}}
+				{{/if}}
+				<form action="/user/register" method="post">
+					<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+					<div class="form-row mb-3">
+						<label class="col-sm-3 col-xl-2 col-form-label" for="email">E-Mail</label>
+						<input type="text" id="email" name="email" class="form-control col-sm-9 col-xl-10">
+					</div>
+					<div class="form-row mb-3">
+						<label class="col-sm-3 col-xl-2 col-form-label" for="password">Password</label>
+						<input type="password" id="password" name="password" class="form-control col-sm-9 col-xl-10">
+					</div>
+					<div class="form-row">
+						<div class="offset-sm-3 offset-xl-2 col-sm-3 col-xl-2 p-0 mr-0">
+							<button class="btn btn-primary" type="submit">Sign Up</button>
+						</div>
+						<div class="pl-sm-2 col-sm-6 col-xl-8 text-small text-muted">
+							Already have an account? <a href="/user/login">Login</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

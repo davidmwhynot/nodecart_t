@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-center">
+	<div class="col-sm-10 col-md-8 col-lg-6">
+		<form action="/user/login" method="post">
+			<input type="hidden" name="_csrf" value="{{ csrfToken }}">
+			{{> login }}
+		</form>
+	</div>
+</div>

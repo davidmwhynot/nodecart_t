@@ -1,0 +1,50 @@
+<div class="back-button mb-3">
+	<a href="javascript:history.back()" class="text-body">Go Back</a>
+</div>
+<h1 class="display-2 mb-4">Shopping Cart</h1>
+{{#if products}}
+
+	<div class="justify-content-md-center mb-3">
+		<ul class="list-group">
+			{{#each products}}
+				<li class="list-group-item cart-item">
+					<span class="item-title">
+						<strong>{{this.item.title}}</strong>
+						<span class="text-muted">${{this.item.price}}</span>
+					</span>
+					<p class="item-desc d-none d-sm-block">{{this.item.description}}</p>
+					<span class="item-qty">Qty: <span class="badge badge-pill badge-primary">{{this.qty}}</span></span>
+					<span class="badge badge-success item-price">${{this.price}}</span>
+					<div class="dropdown item-action">
+					  <button class="btn btn-danger btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+					    Delete
+					  </button>
+					  <div class="dropdown-menu">
+					    <a class="dropdown-item" href="/shop/cart/delete/one/{{this.item._id}}">Delete One</a>
+					    <a class="dropdown-item" href="/shop/cart/delete/all/{{this.item._id}}">Delete All</a>
+					  </div>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+	<div class="row mb-2">
+		<div class="col-sm mb-3 mb-md-0">
+			<form class="form-inline d-flex flex-xs-nowrap">
+			  <label class="my-1 mr-2 flex-shrink-1 flex-shrink-xs-0" for="coupon">Coupon Code:</label>
+				<div class="d-flex flex-nowrap">
+					<input type="text" class="form-control form-control-sm my-1 mr-2" id="coupon" name="coupon" placeholder="XXX-XXX-XXX-XXXX">
+					<button type="submit" class="btn btn-sm btn-primary my-1">Apply</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-sm text-sm-right">
+			<strong>Total: </strong>${{totalPrice}}
+			<a href="/shop/checkout" class="btn btn-success">Checkout</a>
+		</div>
+	</div>
+{{else}}
+	<h1 class="display-4">Your Cart is Empty...</h1>
+	<p class="lead cart-help"><em>Try adding some items from the </em><a href="/shop">Shop</a></p>
+
+{{/if}}
